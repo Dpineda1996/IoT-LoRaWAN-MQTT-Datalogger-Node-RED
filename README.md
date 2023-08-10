@@ -1,4 +1,4 @@
-# IoT-LoRaWAN-Datalogger-Node-RED
+# IoT-LoRaWAN-MQTT-Datalogger-Node-RED
 
 Node-Red full open access programming for IoT-LoRaWAN-Datalogger-Node-RED field station automated using Raspberry Pi and MQTT communication.
 
