@@ -1,8 +1,9 @@
 # IoT-LoRaWAN-Datalogger-Node-RED
-Node-Red full programming for IoT-LoRaWAN-Datalogger-Node-RED field station datalogger automated using Raspberry Pi and MQTT communication.
+Node-Red full programming for IoT-LoRaWAN-Datalogger-Node-RED field station automated using Raspberry Pi and MQTT communication.
+
 *This Project was developed as part of the Alliance of Bioversity International & CIAT IoT initiatives.
 
-**This is a full Node-Red flow that was initially developed for automatically controlling the air temperature inside the greenhouses and the irrigation of the plants for the Bean Physiology Team. However, it can be implemented in other experiment locations where temperature or irrigation must be controlled.
+**This is a full Node-Red flow that was initially developed for automatically monitoring and storing data from LoRaWAN sensors in the field of Palmira Campus in Colombia. A project led by the Bean Physiology Team and lever crops for nutrition and health.
 
 ***This is one of the projects developed focused on the most important thing in agriculture research, the PLANTS!!!
 
