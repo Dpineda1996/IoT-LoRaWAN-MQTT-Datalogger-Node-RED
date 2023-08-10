@@ -83,7 +83,7 @@ A new feature is used to dynamically store data in a MySQL table. With this prog
 
 The implementation for downloading data based on date limits that the user can choose using the dashboard or web application. 
 
-Nodes to automatically set the date and time into the the Raspberry Pi.
+Nodes to automatically set the date and time into the Raspberry Pi.
 
 We have tested Raspberry Pi under field environment conditions (high temperatures, humidity, sunlight, air) and we are totally sure that these ones are robust enough to work perfectly in these hard environments. This enables the possibility to have a trustable sophisticated datalogger at a low-cost using IoT.
 
