@@ -36,14 +36,22 @@ Node-Red full open access programming for IoT-LoRaWAN-Datalogger-Node-RED field 
 - Remember that you need to install the missing modules that Node-Red will notify you after importing the flows.
 - In addition by setting personalized parameters is possible to store the data in a MySQL database and download them in a CSV format.
 - Please navigate to the center of every flow where nodes are programmed.
+- A dynamic storing of data in MySQL and the download between selectable date limits are innovative features that I implemented in this version of programming. Therefore my repository https://github.com/Dpineda1996/IoT-Greenhouse-Temperature-and-Irrigation-Controller-Node-Red.git does not include these characteristics.
 
 # The Node-Red Flows:
 
 All flows and some nodes include comments inside to easily understand the code.
 
+- Initialize
+
+Start the flows and control the parameters change made by the user through the web application.- Alarms
+
+You will find here:
+
+The nodes are necessary to alert the user when temperature or soil humidity is over the previously set reference limits.
+
 - User Parameters Flow
-
-
+![settings or parameters user tab](https://github.com/Dpineda1996/IoT-LoRaWAN-MQTT-Datalogger-Node-RED/assets/77678151/5b5df3cf-7518-4772-acb6-76efefe5c6c2)
 Web User Application - Tab settings configuration
 
 You will find here: 
@@ -54,82 +62,30 @@ The flows for setting the experiment information and email where alerts will be 
 
 Apply the configuration selected and extracted from MySQL after an unexpected reboot
 
-- Alarms
 
-You will find here:
+- Sensors LoRaWAN
 
-The nodes are necessary to alert the user when temperature or humidity is over the previously set reference limits.
-
-- Sensors & Data Integration
-
-
+![Appimg](https://github.com/Dpineda1996/IoT-LoRaWAN-MQTT-Datalogger-Node-RED/assets/77678151/f2d2e626-34e6-455b-b0a3-9647e49d2ec6)
 Web User Application - Tab monitoring
 
 You will find here:
 
-Sensors data provisional replace for precise the control logic in case of some sensor fails (because of electrical or network failure), it will take data from the other one placed closely.
-
-Calculate the average data of the Temperature, Humidity, Dew point & VPD.
-
-- Control
-
-You will find here:
-
-This is based on a system controlled by relays connected to the Raspberry Pi and an additional electrical power system to control motors.
-
-These motors are working as heat extractors (extractors/fans) and will be controlled regarding the data from sensors and references set by the user in the dashboard.
-
-There are four extractors (in our project) connected to pins 29,31,33 and 36 of the Raspberry Pi. We called them:
-
-Fan left 1 (fl1), Fan left 2 (fl2), Fan right 1 (fr1), Fan right 2 (fr2).
-
-Users can set the reference values for temperature control
-
-fref1 = Temperature during the day. 
-
-fref2 = Temperature to step change and prevent high gradient rate. 
-
-fref3 = Temperature during the night.
-
-The day and night limits were created to control the temperature in parameters near real behavior. This means that in real conditions in the field, there are higher temperatures during the day than at night. So, this affects the plants and for that reason, the programming includes the possibility for the user can set the reference temperatures to be controlled automatically in these periods daily and simulate an environment close to real scenarios.
-
-Note to:
-
-Between fTime2 and fTime 3 is the day; Between fTime4 and fTime1 is night; Between fTime1 and fTime2 & fTime3 and fTime4 are the steps, where the temperature should be set in a middle point to not apply high changes directly to the plants.
-
-The heat extractors will be turned on if the temperature is 1°C above reference (tref) in that period otherwise will be turned off.
-
-Users can also select in the dashboard if every extractor works with every tref  (day, night, step) then, the control action will use or not that specific extractor to increase or decrease the temperature.
-
-Remember that fref1 is the temperature during the day the day and night limits can be changed in the "fTime&fRef limits control" node.
-
-The Cooling (irrigation) flow is based on a system controlled by electro-valves which control the flow of water to irrigate the soil or the plants inside the greenhouse.
-
-The irrigation/cooling control is connected to the pin35 in the Raspberry Pi. However, you can change it as well as you need.
+Programming logic to receive and decode sensor data using MQTT. You can add as many as sensors you need only by adding the MQTT node and implementing the specific decoding function.
 
 - Database
 
+![app_save](https://github.com/Dpineda1996/IoT-LoRaWAN-MQTT-Datalogger-Node-RED/assets/77678151/397bec85-b29b-4803-aa8a-e3ffcb1bf15f)
+Web User Application - Tab download data
+
 You will find here:
 
-These flows are for storing in the database.
+A new feature is used to dynamically store data in a MySQL table. With this programming, is not necessary to modify the initially created table if we need to store a new variable non-stored before. Because the nodes automatically will check if the column to store the new variable exists. If not, it will create it and then data are stored.
 
-Note that data will be stored every ten minutes. You can change this in the "Store interval" node.
+The implementation for downloading data based on date limits that the user can choose using the dashboard or web application. 
 
-Data will be saved in the table DATA (you can change this on every DataSensor node).
+Nodes to automatically set the date and time into the the Raspberry Pi.
 
-Remember that data must coincide with the columns in the created table.
-
-Nodes that will help you to create your personalized MySQL table and will guide you in the process of storing data.
-
-Nodes to download data from the MySQL table directly.
-
-Remember that this will only download your information related to the current trial in the course selected by the user in the dashboard; This was done in that way to not overload the Raspberry Pi with downloading very heavy files.
-
-Note that are created two files to be downloaded. One file is from the DATA database and contains all information from sensors stored. The second one is from the SETTINGS database, which stored all configurations that the user set before. Then is possible to download both files with different information but depending on the current trial name.
-
-PLEASE MAKE SURE THAT THE TWO FILES (FROM DATA AND CONFIG) ARE NAMED CORRECTLY AND DIFFERENTLY.
-
-We have tested Raspberry Pi under greenhouse conditions (high temperatures and humidity) and we are totally sure that these ones are robust enough to work perfectly in these hard environments. This enables the possibility to have trustable sophisticated datalogger and controllers at low-cost using IoT.
+We have tested Raspberry Pi under field environment conditions (high temperatures, humidity, sunlight, air) and we are totally sure that these ones are robust enough to work perfectly in these hard environments. This enables the possibility to have a trustable sophisticated datalogger at a low-cost using IoT.
 
 Hope this will be useful for your projects. Let´s improve the plant research process together!!!
 
