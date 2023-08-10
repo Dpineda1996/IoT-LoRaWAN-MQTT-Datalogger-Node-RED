@@ -14,20 +14,23 @@ Node-Red full programming for IoT-LoRaWAN-Datalogger-Node-RED field station auto
 
 ***The programming uses MQTT and MySQL connections. Developed for any Raspberry Pi use. In addition, a user-friendly dashboard was developed for all users in the world can easily interact remotely and set their own parameters according to their plants' needs.
 
-*This project involved collaboration with many plant scientists in the Alliance of Bioversity International & CIAT. Special thanks to Drs. Milan Urban, Ph.D.; Steve Beebe, Ph.D.; Clare Mukankusi, Ph.D.; for their invaluable support and funding. And Eng Harold Diaz, my colleague who began whit these implementations and developed the first version used as a basic template for this project. In addition, our technician Fabricio Soto and the Eng trainees Alejandra Guzman and Sebastian Pinzon contributed to this project.
+*This project involved collaboration with many plant scientists in the Alliance of Bioversity International & CIAT. 
+
+*Special thanks to Drs. Milan Urban, Ph.D.; Steve Beebe, Ph.D.; Clare Mukankusi, Ph.D.; for their invaluable support and funding. And Eng Harold Diaz, my colleague who began whit these implementations and developed the first version used as a basic template for this project. 
+
+*In addition, our technician Fabricio Soto and the Electronical Engineer trainees Alejandra Guzman and Sebastian Pinzon contributed to this project.
 
 # Before starting:
-- Node-Red full programming for greenhouse IoT automation using Raspberry Pi.
-- The JSON programming code is able to control the temperature in a greenhouse based on data from Wi-Fi sensors connected through MQTT (deploy after setting your personalized configuration). 
+- The JSON programming code in Node-Red is able to plot and store the data from LoRaWAN sensors connected through MQTT Gateway to Raspberry Pi. 
 - This system was tested in Raspberry Pi 4, Zero, and Zero W. However you can deploy it on Raspberry Pi 3 also.
 - The version of the Node-RED was 1.3.5. However, it is possible to use it in recent versions of Node-Red. Note to in recent versions (newest NodeJs versions), the variables must be declared with the type before the name (example: var name_variable;).
-- Keep into account that the programming is connected to the physical output pins of the Pi. This means that must be control actuators (fans, heat extractors, etc) connected through relays to these pins to the system can run effectively the control action automatically.
-- The same with the irrigation, some valves or pumps must be controlled with relays connected to the Pi outputs.
-- There are providers such as Amazon or Waveshare that offer many HAT options for Raspberry Pi with relays included. Example: https://www.waveshare.com/product/raspberry-pi/hats.htm
-- In normal conditions, heat extractors are turned ON to decrease or OFF to increase the temperatures inside the greenhouses. But also for increasing the temperature, heaters can be adapted to this system.
-- All devices connected through MQTT must be in the same Wi-Fi network. And the Raspberry Pi will be used as a broker.
-- The sensors used were the sonoff TH Elite (https://sonoff.tech/product/diy-smart-switches/th-elite/) with a SI7021 Temperature & Humidity sensor.
-- Each one of these sensors must be TASMOTIZED (recommendable using VisualStudio with the developed by Theo Arends https://github.com/arendst/Tasmota).
+- This project was deployed in a remote area in the field. Thus, internet access and electrical source were not available. Therefore, to implement the system was used a 12V 100W solar panel and a 12V 70Ah battery.
+- We use the DLS08 outdoor gateway from Dragino which is able to send and receive data from sensors using LoRa. But also, is capable of creating a local Wi-Fi network where the Raspberry was connected to establish the MQTT communication. The gateway also allows SIMCARD use, so it is possible to use an internet connection through implement this chip. See the gateway here(https://www.dragino.com/products/lora-lorawan-gateway/item/160-dlos8.html).
+- Note that in cases where Raspberry Pi has not internet connection, the date and time will be lost in case of some rebooting. To solve this, the Node-Red programming includes nodes that take automatically this information from the device that the user is using to be connected to the developed web application. In addition, you will see that information at the head of every tab.
+- Raspberry Pi and gateway must be connected to the same Wi-Fi network for the MQTT communication work. And the Raspberry Pi will be used as a broker.
+- The sensors used in the programming were the LSE01 soil moisture and EC sensor. However, by implementing the proper decoding function other LoRa sensors can be used. See the sensor used here: https://www.dragino.com/products/lora-lorawan-end-node/item/159-lse01.html.
+- Every sensor must be set using the proper AT commands. Keep into account that every device must be in the same Frequency Sub Band than the gateway. see the sensor manual: (https://www.dragino.com/downloads/downloads/LoRa_End_Node/LSE01/LSE01_AT_Commands_v1.0.pdf) and 
+- and must be registered in the gateway previously.
 - However, it is possible to use this system with any MQTT sensor.
 - Remember that it is necessary to install the mosquitto broker on the Raspberry Pi (https://randomnerdtutorials.com/how-to-install-mosquitto-broker-on-raspberry-pi/).
 - Necessary to install MariaDB server in Raspberry Pi for MySQL use (https://raspberrytips.com/install-mariadb-raspberry-pi/).
