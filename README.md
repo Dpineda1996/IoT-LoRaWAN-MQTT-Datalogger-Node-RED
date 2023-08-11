@@ -51,7 +51,8 @@ You will find here:
 The nodes are necessary to alert the user when temperature or soil humidity is over the previously set reference limits.
 
 - User Parameters Flow
-![settings or parameters user tab](https://github.com/Dpineda1996/IoT-LoRaWAN-MQTT-Datalogger-Node-RED/main/settings or parameters user tab.png?raw=true)
+
+![alt text](https://github.com/Dpineda1996/IoT-LoRaWAN-MQTT-Datalogger-Node-RED/main/settings or parameters user tab.png?raw=true)
 Web User Application - Tab settings configuration
 
 You will find here: 
