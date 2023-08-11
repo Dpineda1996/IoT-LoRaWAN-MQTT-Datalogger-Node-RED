@@ -52,7 +52,7 @@ The nodes are necessary to alert the user when temperature or soil humidity is o
 
 - User Parameters Flow
 
-![alt text](https://github.com/Dpineda1996/IoT-LoRaWAN-MQTT-Datalogger-Node-RED/main/settings or parameters user tab.png?raw=true)
+![User Tab](settings_user_tab.png)
 Web User Application - Tab settings configuration
 
 You will find here: 
@@ -66,7 +66,7 @@ Apply the configuration selected and extracted from MySQL after an unexpected re
 
 - Sensors LoRaWAN
 
-![Appimg](https://github.com/Dpineda1996/IoT-LoRaWAN-MQTT-Datalogger-Node-RED/assets/77678151/f2d2e626-34e6-455b-b0a3-9647e49d2ec6)
+![Appimg](Appimg.png)
 Web User Application - Tab monitoring
 
 You will find here:
@@ -75,7 +75,7 @@ Programming logic to receive and decode sensor data using MQTT. You can add as m
 
 - Database
 
-![app_save](https://github.com/Dpineda1996/IoT-LoRaWAN-MQTT-Datalogger-Node-RED/assets/77678151/397bec85-b29b-4803-aa8a-e3ffcb1bf15f)
+![app_save](app_save.png)
 Web User Application - Tab download data
 
 You will find here:
